@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'carpeta/iniciar.dart';
-import 'carpeta/registrarse.dart';
+import 'registro/iniciar.dart';
+import 'registro/registrarse.dart';
+import 'registro/inicio.dart';
 
 void main() {
   runApp(const SmileApp());
@@ -101,75 +102,3 @@ class _TabItem extends StatelessWidget {
   }
 }
 
-// --- PANTALLA DE INICIO ---
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: sharedAppBar(context),
-      body: Column(
-        children: [
-          sharedSecondaryNav(),
-          Expanded(
-            child: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 800), // Contenido central más angosto para lectura
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(40.0), // Más aire en los costados para Web
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Dentista Juarez', 
-                        style: TextStyle(fontSize: 32, fontWeight: FontWeight.w300)
-                      ),
-                      const SizedBox(height: 15),
-                      const Text(
-                        'Elige entre los mejores dentistas de Cd. Juarez, especialistas en distintos tratamientos dentales. Desde odontología general hasta procedimiento de estética dental.',
-                        style: TextStyle(fontSize: 16, color: Colors.black54, height: 1.5),
-                      ),
-                      const SizedBox(height: 30),
-                      ClipRRect( // Imagen con bordes redondeados sutiles
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.network(
-                          'https://raw.githubusercontent.com/MartinezVictor08/ima/refs/heads/main/d.jpg',
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      const SizedBox(height: 35),
-                      Row(
-                        children: [
-                          Expanded(child: _actionButton('Ver ubicación')),
-                          const SizedBox(width: 20),
-                          Expanded(child: _actionButton('Agendar Cita')),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _actionButton(String text) {
-    return OutlinedButton(
-      onPressed: () {},
-      style: OutlinedButton.styleFrom(
-        side: const BorderSide(color: Color(0xFF1A3A5F), width: 2),
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-        padding: const EdgeInsets.symmetric(vertical: 20),
-      ),
-      child: Text(text, 
-        style: const TextStyle(color: Color(0xFF1A3A5F), fontWeight: FontWeight.bold)
-      ),
-    );
-  }
-}
